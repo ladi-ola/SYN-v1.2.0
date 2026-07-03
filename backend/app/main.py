@@ -38,11 +38,14 @@ app = FastAPI(
     redoc_url=None,
 )
 
+origins = [
+    "http://localhost:5173",          # local development
+    "https://syn-v1-2-0.vercel.app",  # production frontend
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://syn-v1-2-0.vercel.app/"
-    ],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
